@@ -48,8 +48,9 @@ suite("Documentation Test Suite", () => {
             test(`Documentation: ${testCase.name}`, async () => {
                 const workingDir = path
                     .dirname(__filename)
-                    .replace("/out/", "/")
-                    .replace("\\out\\", "/")
+                    .replace("/out/", path.sep)
+                    .replace("\\out\\", path.sep)
+                    .replace(/\\/g, "/")
 
                 const hovers = await this.getHovers(testCase.input)
                 const actual = hovers
@@ -61,6 +62,7 @@ suite("Documentation Test Suite", () => {
                     )
                     .join("\n")
                     .trim()
+                    .replace(/\\/g, "/") // hz
                     .replace(this.workingDir(), "<working-dir>")
                     .replace(workingDir, "<working-dir>")
 

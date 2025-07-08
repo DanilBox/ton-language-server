@@ -35,6 +35,7 @@ export abstract class BaseTestSuite {
 
     public workingDir(): string {
         return path.join(__dirname, "../../../../../test-workspace/")
+            .replace(/\\/g, "/")
     }
 
     public async setup(): Promise<void> {

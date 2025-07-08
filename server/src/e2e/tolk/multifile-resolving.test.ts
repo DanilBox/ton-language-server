@@ -64,6 +64,7 @@ suite("Multi file Resolve Test Suite", () => {
                     )} (${path.relative(this.testDir, target.targetUri.fsPath)}) resolved`
                 })
                 .join("\n")
+                .replace(/\\/g, "/")
         }
 
         protected runTest(testFile: string, testCase: TestCase): void {
